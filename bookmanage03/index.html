@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    {{ message }}
+    [[ message ]]
+    <hr>
+    <a v-bind:href="next">Vue.js</a>
+    <hr>
+    <a href="#" v-if="isLogin">Login</a>
+    <a href="#" v-else>Logout</a>
+    <hr>
+    <a href="#" v-if="level >= 3">Admin</a>
+    <a href="#" v-else-if="level >= 2">User</a>
+    <a href="#" v-else>Guest</a>
+    <hr>
+    <span v-if = "seen">Now you see me</span>
+    <span v-show="seen">Now you can see me</span>
+    <hr>
+    <ul>
+        <!--<li v-for="(shop,index) in shops">{{ index+1 }} {{ shop }}</li>
+-->
+        <li v-for="(value, key, index) in object">{{ index+1 }} {{ key }}: {{ value }}</li>
+    </ul>
+    <hr>
+    <button v-on:click="counter += 1">Add 1</button>
+    <span>{{ counter }}</span>
+    <br>
+    <button v-on:click="login">Login</button>
+    <hr>
+    <button @click="sayhi('ruhua')">Say Hi</button>
+</div>
+</body>
+<script type="text/javascript">
+    var app = new Vue({
+      el:"#app",
+        //delimiters: ['[[', ']]'],
+      data:{
+          message: "Hello Vue.js!",
+          next:"https://www.baidu.com",
+          isLogin: true,
+          level: 2,
+          seen: false,
+          shops: ['apple', 'banana', 'orange', 'pear', 'grape'],
+          object: {
+              title: 'How to do lists in Vue',
+              author: 'Jane Doe',
+              publishedAt: '2016-04-10'
+          },
+          counter: 0,
+      },
+        methods: {
+              login:function(){
+                  alert("login success")
+              },
+              sayhi:function(message){
+                  alert(message)
+              }
+          },
+    })
+</script>
+</html>

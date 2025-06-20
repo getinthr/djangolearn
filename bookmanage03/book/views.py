@@ -178,7 +178,7 @@ def set_cookie(request):
     response.set_cookie('name', username, max_age=60 * 60)
     response.set_cookie('pwd', password)
 
-    response.delete_cookie('name')
+    # response.delete_cookie('name')
 
     return response
 
@@ -301,3 +301,15 @@ class Person(object):
 
 
 Person.say()
+
+from django.contrib.auth.mixins import LoginRequiredMixin
+class OrderView(LoginRequiredMixin, View):
+
+    def get(self, request):
+        # isLogin = True
+        # if not isLogin:
+        #     return HttpResponse('denglu')
+        return HttpResponse('get get get')
+
+    def post(self, request):
+        return HttpResponse('post post post')
